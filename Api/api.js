@@ -1,19 +1,18 @@
 var finalhandler = require('finalhandler')
 var http         = require('http')
 var Router       = require('router')
-const childProcess = require('child_process');
 
- 
+
 var router = Router()
 router.get('/', function (req, res) {
   res.setHeader('Content-Type', 'text/plain; charset=utf-8')
-  res.end('Hello World!')
+  res.end('Hello World from child process!')
 })
- 
+
 var server = http.createServer(function(req, res) {
   router(req, res, finalhandler(req, res))
 })
-server.listen(3000)
+server.listen(3001)
 
 
-var child = childProcess.fork('./Api/api.js');
+//module.exports = process
